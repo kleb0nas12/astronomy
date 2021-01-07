@@ -1,4 +1,12 @@
+'''
+Here we define Manual Error classes and usuage for abnormal or/and uneven events.
+'''
+
+
 class TooLowHighTempError(Exception):
+    '''
+    Error to inform about abnormal temperature events.
+    '''
     def __init__(self, temp):
         self.temp = temp
     

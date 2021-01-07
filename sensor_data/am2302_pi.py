@@ -1,4 +1,5 @@
 import Adafruit_DHT  # Adafruit library fro RPi
+from exceptionlist import TooLowHighTempError
 import time
 
 
@@ -16,6 +17,10 @@ class AmSensor(object):
     def read_sensor_data(self) -> tuple:
         try:
             humidity, temp = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
+            humidity = self.transform_sensor_data(humidity)
+            temp = self.transform_sensor_data(temp)
+            if temp < -30 or temp > 60:
+                raise TooLowHighTempError(temp)
             return humidity, temp
         except Exception as e:
             print(f'Problem has appeared with the exception {e}')

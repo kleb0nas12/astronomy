@@ -1,5 +1,5 @@
-import Adafruit_DHT  # Adafruit library fro RPi
-from exceptionlist import TooLowHighTempError
+import Adafruit_DHT  # Adafruit library for RPi
+from ecxeptionlist import TooLowHighTempError
 import time
 
 

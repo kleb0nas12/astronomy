@@ -18,6 +18,7 @@ class AmSensor(object):
             humidity, temp = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
             humidity = self.transform_sensor_data(humidity)
             temp = self.transform_sensor_data(temp)
+            print(humidity, temp)
             if int(temp) < -30 or int(temp) > 60:
                 raise TooLowHighTempError(temp)
             return humidity, temp

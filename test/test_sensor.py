@@ -18,10 +18,18 @@ class TestAmSensor:
         result = sensor.transform_sensor_data(number)
         assert result == expected
 
-    def test_mock_read_sensor(self, mocker):
-        mocker.patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry',
-                     return_value=(20.589, 88.689))
+    # def test_mock_read_sensor(self, mocker):
+    #     mocker.patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry',
+    #                  return_value=(20.589, 88.689))
+    #     _sensor = AmSensor()
+    #     assert _sensor.read_sensor_data() == (20.59, 88.69)
 
-        _sensor = AmSensor()
+    @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', new=mocked_current_reading)
+    def test_main_function(self):
 
-        assert _sensor.read_sensor_data() == (20.59, 88.69)
+        result = AmSensor.read_sensor_data()
+        truth = (20.59, 88.69)
+        assert result == truth
+
+    def mocked_current_reading(self):
+        return (20.589, 88.689)

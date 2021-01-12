@@ -1,4 +1,4 @@
-import Adafruit_DHT  # Adafruit library for RPi
+from Adafruit_DHT import DHT22, read_retry # Adafruit library for RPi
 from ecxeptionlist import TooLowHighTempError
 import time
 
@@ -10,7 +10,7 @@ class AmSensor(object):
     to a raspberi pi.  
     '''
     # pinout location
-    DHT_SENSOR = Adafruit_DHT.DHT22
+    DHT_SENSOR = DHT22
     DHT_PIN = 18
 
     # getting data from sensor

@@ -45,14 +45,13 @@ import Adafruit_DHT
 
 
 def current_reading():
-    return (20.589, 88.689)
+    return (20.589, 28.689)
 
-@patch.object(Adafruit_DHT, 'read_retry')
+@patch('path.iki.tavo.failo.read_retry')
 def test_main_function(mock):
     mock.return_value = current_reading()
     data= AmSensor()
     result = data.read_sensor_data()
-    truth = (20.59, 88.69)
+    truth = (20.59, 28.69)
     assert result == truth
-
 

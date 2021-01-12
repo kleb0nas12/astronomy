@@ -1,4 +1,4 @@
-from Adafruit_DHT import DHT22, read_retry # Adafruit library for RPi
+#from Adafruit_DHT import DHT22, read_retry # Adafruit library for RPi
 import Adafruit_DHT
 from ecxeptionlist import TooLowHighTempError
 import time
@@ -11,14 +11,16 @@ class AmSensor(object):
     to a raspberi pi.  
     '''
     # pinout location
-    def __init__(self):
-        self.DHT_SENSOR = DHT22
-        self.DHT_PIN = 18
+    # def __init__(self):
+    #     self.DHT_SENSOR = Adafruit_DHT.DHT22
+    #     self.DHT_PIN = 18
 
+    DHT_PIN = 18
+    DHT_SENSOR = Adafruit_DHT.DHT22
     # getting data from sensor
     def read_sensor_data(self) -> tuple:
         try:
-            humidity, temp = Adafruit_DHT.read_retry(self.DHT_SENSOR, self.DHT_PIN)
+            humidity, temp = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
             humidity = self.transform_sensor_data(humidity)
             temp = self.transform_sensor_data(temp)
             if int(temp) < -30 or int(temp) > 60:

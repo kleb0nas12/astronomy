@@ -1,5 +1,4 @@
 from Adafruit_DHT import DHT22, read_retry # Adafruit library for RPi
-import Adafruit_DHT 
 from ecxeptionlist import TooLowHighTempError
 import time
 

@@ -1,4 +1,4 @@
-from am2302_pi import AmSensor
+from sensor_data.am2302_pi import AmSensor
 from ecxeptionlist import TooLowHighTempError
 import pytest
 from unittest.mock import patch
@@ -18,7 +18,7 @@ class TestAmSensor:
         assert result == expected
 
     def test_mock_read_sensor(self, mocker):
-        mocker.patch('am2302_pi.Adafruit_DHT.read_retry',
+        mocker.patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry',
                      return_value=(20.589, 28.689), autospec=True)
         _sensor = AmSensor()
         assert _sensor.read_sensor_data() == (20.59, 28.69)

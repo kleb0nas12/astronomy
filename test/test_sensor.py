@@ -24,4 +24,4 @@ class TestAmSensor:
 
         _sensor = AmSensor()
 
-        assert _sensor.read_sensor_data() == (20.6, 88.7)
+        assert _sensor.read_sensor_data() == (20.59, 88.69)

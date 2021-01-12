@@ -2,7 +2,7 @@ from sensor_data.am2302_pi import AmSensor
 from ecxeptionlist import TooLowHighTempError
 import pytest
 from unittest.mock import patch
-
+import Adafruit_DHT
 
 # class TestAmSensor:
 

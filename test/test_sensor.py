@@ -46,7 +46,7 @@ from unittest.mock import patch
 def current_reading():
     return (20.589, 28.689)
 
-@patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry')
+@patch('sensor_data.am2302_pi.read_retry')
 def test_main_function(mock):
     mock.return_value = current_reading()
     data= AmSensor()

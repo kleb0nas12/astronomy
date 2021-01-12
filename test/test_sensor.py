@@ -1,5 +1,5 @@
 from sensor_data.am2302_pi import AmSensor
-from ecxeptionlist import TooLowHighTempError
+from exception_list.exc import TooLowHighTempError
 import pytest
 from unittest.mock import patch
 

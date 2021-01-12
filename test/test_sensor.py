@@ -1,4 +1,4 @@
-from sensor_data.am2302_pi import AmSensor
+from am2302_pi import AmSensor
 from ecxeptionlist import TooLowHighTempError
 import pytest
 from unittest.mock import patch
@@ -45,7 +45,7 @@ from unittest.mock import patch
 def current_reading():
     return (20.589, 28.689)
 
-@patch('sensor_data.am2302_pi.read_retry')
+@patch('am2302_pi.read_retry')
 def test_main_function(mock):
     mock.return_value = current_reading()
     data= AmSensor()

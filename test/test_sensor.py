@@ -37,8 +37,8 @@ def current_reading():
 
 @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', new=current_reading)
 def test_main_function():
-
-    result = AmSensor.read_sensor_data()
+    data= AmSensor()
+    result = data.read_sensor_data()
     truth = (20.59, 88.69)
     assert result == truth
 

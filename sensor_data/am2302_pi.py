@@ -1,5 +1,5 @@
 import Adafruit_DHT 
-from ecxeptionlist import TooLowHighTempError
+from ..ecxeptionlist import TooLowHighTempError
 import time
 
 

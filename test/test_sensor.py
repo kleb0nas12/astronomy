@@ -24,7 +24,7 @@ class TestAmSensor:
     #     _sensor = AmSensor()
     #     assert _sensor.read_sensor_data() == (20.59, 88.69)
 
-    @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', new=mocked_current_reading)
+    @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', new=self.mocked_current_reading)
     def test_main_function(self):
 
         result = AmSensor.read_sensor_data()

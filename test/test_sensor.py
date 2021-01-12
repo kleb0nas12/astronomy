@@ -22,7 +22,7 @@ class TestAmSensor:
 
     def test_mock_read_sensor(self, mocker):
         mocker.patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', return_value = (20.589,88.689))
-        assert AmSensor() == (20.6,88.7)
+        assert AmSensor.read_sensor_data() == (20.6,88.7)
 
         
 

@@ -25,6 +25,7 @@ class AmSensor(object):
         except Exception as e:
             print(f'Problem has appeared with the exception {e}')
 
+
     # transforming data to the nearest second number after the decimal
     def transform_sensor_data(self, data: float) -> float:
         return round(data, 2)

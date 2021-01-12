@@ -34,12 +34,12 @@ from unittest.mock import patch
 #         return (20.589, 88.689)
 
 @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', new=mocked_current_reading)
-def test_main_function(self):
+def test_main_function():
 
     result = AmSensor.read_sensor_data()
     truth = (20.59, 88.69)
     assert result == truth
 
 
-def mocked_current_reading(self):
+def mocked_current_reading():
     return (20.589, 88.689)

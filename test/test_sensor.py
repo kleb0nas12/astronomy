@@ -47,7 +47,7 @@ import Adafruit_DHT
 def current_reading():
     return (20.589, 28.689)
 
-@patch('path.iki.tavo.failo.read_retry')
+@patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry')
 def test_main_function(mock):
     mock.return_value = current_reading()
     data= AmSensor()

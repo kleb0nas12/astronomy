@@ -34,6 +34,6 @@ class AmSensor(object):
 
 
 
-if __name__==__main__:
+if __name__== "__main__":
     s = AmSensor()
     print('fuck you')

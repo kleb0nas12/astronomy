@@ -30,3 +30,10 @@ class AmSensor(object):
     # transforming data to the nearest second number after the decimal
     def transform_sensor_data(self, data: float) -> float:
         return round(data, 2)
+
+
+
+
+if __name__==__main__:
+    s = AmSensor()
+    print('fuck you')

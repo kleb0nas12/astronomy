@@ -1,6 +1,6 @@
-import Adafruit_DHT 
-#from manual_exceptions import TooLowHighTempError
 import manual_exceptions
+import Adafruit_DHT
+#from manual_exceptions import TooLowHighTempError
 import time
 
 
@@ -12,6 +12,7 @@ class AmSensor(object):
     '''
     # pinout location
     # getting data from sensor
+
     def read_sensor_data(self) -> tuple:
         DHT_SENSOR = Adafruit_DHT.DHT22
         DHT_PIN = 18
@@ -26,11 +27,11 @@ class AmSensor(object):
         except Exception as e:
             print(f'Problem has appeared with the exception {e}')
 
-
     # transforming data to the nearest second number after the decimal
+
     def transform_sensor_data(self, data: float) -> float:
         return round(data, 2)
 
-
-
-
+if __name__ == '__main__':
+    cl = AmSensor()
+    cl.read_sensor_data()

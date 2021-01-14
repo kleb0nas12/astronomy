@@ -1,4 +1,4 @@
-import manual_exceptions
+from manual_exceptions import TooLowHighTempError
 import Adafruit_DHT
 #from manual_exceptions import TooLowHighTempError
 import time
@@ -22,7 +22,7 @@ class AmSensor(object):
         temp = self.transform_sensor_data(temp)
         print(humidity, temp)
         if int(temp) < -30 or int(temp) > 60:
-            raise manual_exceptions.TooLowHighTempError(temp)
+            raise TooLowHighTempError(temp)
         return humidity, temp
         # except Exception as e:
         #     print(f'Problem has appeared with the exception {e}')
@@ -31,7 +31,3 @@ class AmSensor(object):
 
     def transform_sensor_data(self, data: float) -> float:
         return round(data, 2)
-
-if __name__ == '__main__':
-    cl = AmSensor()
-    cl.read_sensor_data()

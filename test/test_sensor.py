@@ -31,6 +31,6 @@ class TestAmSensor:
         with pytest.raises(TooLowHighTempError) as excinfo:
             _sensor = AmSensor()
             _sensor.read_sensor_data()
-        assert excinfo.value == 'he temperature has reached abnormal level of 88.69! please check the  equipment'
+        assert excinfo.value == 'The temperature has reached abnormal level of 88.69! please check the  equipment'
         
 

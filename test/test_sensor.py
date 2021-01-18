@@ -42,7 +42,7 @@ class TestAmSensor:
 
 
     @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry',new = mocked_adafruit_sensor_data)
-    def test_that_mock_works(self,return_value):
+    def test_that_mock_works(self):
         _sensor = AmSensor()
         result = _sensor.read_sensor_data()
         truth = (20.59, 28.69)

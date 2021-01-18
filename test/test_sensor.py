@@ -44,7 +44,7 @@ class TestAmSensor:
         return 20.589, 28.689
 
 
-    @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', new = mocked_adafruit_sensor_data)
+    @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', return_value=(20.589, 22.689) )#new = mocked_adafruit_sensor_data)
     def test_that_mock_works(self):
         _sensor = AmSensor() 
         result = _sensor.read_sensor_data()

@@ -56,7 +56,7 @@ from unittest.mock import patch
 
 
 # Now without pytest-mock , but using unittest-mock.
-def mocked_adafruit_sensor_data():
+def mocked_adafruit_sensor_data(*args, **kwargs):
     ''' Mock our adafruit sensor function to return some data values'''
     return (20.589, 28.689)
 

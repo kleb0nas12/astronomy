@@ -37,12 +37,13 @@ class TestAmSensor:
 
     ### Now without pytest-mock , but using unittest-mock.
     def mocked_adafruit_sensor_data(self,*args, **kwargs):
-        ''' Mock our adafruit sensor function to return some data values'''
+        ''' Mock our adafruit sensor function to return some data values // figure out about values'''
         return 20.589, 28.689
 
 
     @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry',new = mocked_adafruit_sensor_data)
     def test_that_mock_works(self):
+        '''Testing is mokcing functiopn on patch works'''
         _sensor = AmSensor()
         result = _sensor.read_sensor_data()
         truth = (20.59, 28.69)
@@ -51,26 +52,8 @@ class TestAmSensor:
 
     @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', new = mocked_adafruit_sensor_data)
     def test_mock_read_sensor_with_unittest(self):
+        ''' test sensor temp and humidity data with pytest and unittest.@patch'''
         _sensor = AmSensor()
         assert _sensor.read_sensor_data() == (20.59, 28.69)
 
 
-# # Now without pytest-mock , but using unittest-mock.
-# def mocked_adafruit_sensor_data(*args, **kwargs):
-#     ''' Mock our adafruit sensor function to return some data values'''
-#     return (20.589, 28.689)
-
-
-# # new = mocked_adafruit_sensor_data)
-# @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', return_value=(20.589, 28.689))
-# def test_that_mock_works(*args, **kwargs):
-#     _sensor = AmSensor()
-#     result = _sensor.read_sensor_data()
-#     truth = (20.59, 28.69)
-#     assert result == truth
-
-
-# @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', new=mocked_adafruit_sensor_data)
-# def test_mock_read_sensor_with_unittest():
-#     _sensor = AmSensor()
-#     assert _sensor.read_sensor_data() == (20.59, 28.69)

@@ -18,14 +18,12 @@ from unittest.mock import patch
 #         assert result == expected
 
 
-
 #     def test_mock_read_sensor(self, mocker):
 #         ''' Test sensor temp and humidy data with pytest-mock'''
 #         mocker.patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry',
 #                      return_value=(20.589, 28.689), autospec=True)
 #         _sensor = AmSensor()
 #         assert _sensor.read_sensor_data() == (20.59, 28.69)
-
 
 
 #     def test_mock_read_sensor_raised_exception(self, mocker):
@@ -35,7 +33,6 @@ from unittest.mock import patch
 #             _sensor = AmSensor()
 #             _sensor.read_sensor_data()
 #         assert str(excinfo.value) == 'The temperature has reached abnormal level of 88.69! please check the  equipment'
-        
 
 
 #     ### Now without pytest-mock , but using unittest-mock.
@@ -46,7 +43,7 @@ from unittest.mock import patch
 
 #     @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', return_value=(20.589, 22.689) )#new = mocked_adafruit_sensor_data)
 #     def test_that_mock_works(self):
-#         _sensor = AmSensor() 
+#         _sensor = AmSensor()
 #         result = _sensor.read_sensor_data()
 #         truth = (20.59, 28.69)
 #         assert result == truth
@@ -58,18 +55,22 @@ from unittest.mock import patch
 #         assert _sensor.read_sensor_data() == (20.59, 28.69)
 
 
-
-### Now without pytest-mock , but using unittest-mock.
+# Now without pytest-mock , but using unittest-mock.
 def mocked_adafruit_sensor_data():
     ''' Mock our adafruit sensor function to return some data values'''
-    return 20.589, 28.689
-@patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', return_value=(20.589, 22.689) )#new = mocked_adafruit_sensor_data)
+    return (20.589, 28.689)
+
+
+# new = mocked_adafruit_sensor_data)
+@patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', return_value=(20.589, 22.689))
 def test_that_mock_works():
-    _sensor = AmSensor() 
+    _sensor = AmSensor()
     result = _sensor.read_sensor_data()
     truth = (20.59, 28.69)
     assert result == truth
-@patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', new = mocked_adafruit_sensor_data)
+
+
+@patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', new=mocked_adafruit_sensor_data)
 def test_mock_read_sensor_with_unittest():
     _sensor = AmSensor()
     assert _sensor.read_sensor_data() == (20.59, 28.69)

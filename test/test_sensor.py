@@ -20,11 +20,13 @@ class TestAmSensor:
 
 
     def test_mock_read_sensor(self, mocker):
-        ''' Test sensor temp and humidy data'''
+        ''' Test sensor temp and humidy data with pytest-mock'''
         mocker.patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry',
                      return_value=(20.589, 28.689), autospec=True)
         _sensor = AmSensor()
         assert _sensor.read_sensor_data() == (20.59, 28.69)
+
+
 
     def test_mock_read_sensor_raised_exception(self, mocker):
         ''' Code to test abnormal temp level exception'''
@@ -34,4 +36,26 @@ class TestAmSensor:
             _sensor.read_sensor_data()
         assert str(excinfo.value) == 'The temperature has reached abnormal level of 88.69! please check the  equipment'
         
+
+
+    ### Now without pytest-mock , but using unittest-mock.
+    def mocked_adafruit_sensor_data(self):
+        ''' Mock our adafruit sensor function to return some data values'''
+        return ((20.589, 28.689))
+
+
+    @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', new = mocked_adafruit_sensor_data)
+    def test_that_mock_works(self):
+        _sensor = AmSensor() 
+        result = _sensor.read_sensor_data()
+        truth = (20.59, 28.69)
+        assert result == truth
+
+
+    @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', new = mocked_adafruit_sensor_data)
+    def test_mock_read_sensor_with_unittest(self):
+        _sensor = AmSensor()
+        assert _sensor.read_sensor_data() == (20.59, 28.69)
+
+
 

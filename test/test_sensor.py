@@ -39,6 +39,7 @@ class TestAmSensor:
 
 
     ### Now without pytest-mock , but using unittest-mock.
+    @staticmethod
     def mocked_adafruit_sensor_data(self):
         ''' Mock our adafruit sensor function to return some data values'''
         return 20.589, 28.689
@@ -52,7 +53,7 @@ class TestAmSensor:
         assert result == truth
 
 
-    @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', new = TestAmSensor().mocked_adafruit_sensor_data)
+    @patch('sensor_data.am2302_pi.Adafruit_DHT.read_retry', new = mocked_adafruit_sensor_data)
     def test_mock_read_sensor_with_unittest(self):
         _sensor = AmSensor()
         assert _sensor.read_sensor_data() == (20.59, 28.69)

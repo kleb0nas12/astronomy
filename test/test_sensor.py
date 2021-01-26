@@ -55,5 +55,6 @@ class TestAmSensor:
         ''' test sensor temp and humidity data with pytest and unittest.@patch'''
         _sensor = AmSensor()
         assert _sensor.read_sensor_data() == (20.59, 28.69)
+    
 
 
